@@ -1,0 +1,4 @@
+cat dictionary.txt | wc -w
+cat dictionary.txt | grep -i ^[^o]*o[^o]*o[^o]*o[^o]*$ | wc -w
+cat dictionary.txt | grep -icE ^[^o]*o[^o]+o[^o]+o[^o]*$
+cat dictionary.txt | grep -i oo | grep -oE ^.{3} | sort -f | uniq -ic | sort -nr | head -n 3 | grep -oE .{3}$ | sort
