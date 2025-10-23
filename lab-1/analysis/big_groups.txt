@@ -1,7 +1,8 @@
-Artificial Intelligence - 42
-Computer Systems - 22
-Machine Learning - 17
-Empirical Machine Learning - 15
-Human-Centered and Creative AI - 14
+Artificial Intelligence - 43
+Computer Systems - 25
+Machine Learning - 19
+Human-Centered and Creative AI - 17
+Empirical Machine Learning - 17
 Robotics - 13
 Theory - 11
+Statistical or Theoretical Machine Learning - 11
