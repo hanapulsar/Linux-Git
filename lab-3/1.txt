@@ -1,0 +1,42 @@
+--- 1 ---
+mkdir git-lab-3
+cd git-lab-3
+git init
+
+touch text.txt
+git add .
+git commit -m "add file"
+
+pwd >> text.txt
+git add .
+git commit -m "write pwd in text.txt"
+
+git reset --hard HEAD~1
+cat text.txt
+
+git reset --hard ORIG_HEAD
+cat text.txt
+git diff HEAD~1 HEAD
+#git show HEAD
+#git show HEAD~1
+git log --oneline
+#git reflog
+
+--- 2 ---
+git branch second
+
+git checkout second
+
+echo "second" >> text.txt
+git add .
+git commit -m "change textt on second branch"
+git checkout master
+echo "master" >> text.txt
+git add .
+git commit -m "change textt on master"
+
+git merge second
+nano text.txt
+git add text.txt
+git commit
+:qa!
