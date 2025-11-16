@@ -1,0 +1,92 @@
+--- 1 ---
+
+cat /etc/environment
+cat ~/.bashrc
+
+MY_LOCAL_VAR='local_var_value'
+echo $MY_LOCAL_VAR
+ctrl alt T
+echo $MY_LOCAL_VAR
+
+nano ~/.bashrc
+export MY_SHELL_VAR='shell_var_value'
+echo $MY_SHELL_VAR
+ctrl alt T
+echo $MY_SHELL_VAR
+
+sudo nano /etc/environment
+MY_GLOBAL_VAR='global_var_value'
+python3 -c 'import os; print(os.getenv("MY_GLOBAL_VAR"))'
+#sudo reboot
+python3 -c 'import os; print(os.getenv("MY_GLOBAL_VAR"))'
+
+--- 2 ---
+
+groups
+
+sudo addgroup new_group
+mkdir -pv new_dir
+#touch new_dir/test_file.txt
+echo "some text" > new_dir/test_file.txt
+
+ls -l new_dir/test_file.txt
+sudo chmod o-rwx new_dir/test_file.txt
+sudo chgrp new_group new_dir/test_file.txt
+sudo chown root new_dir/test_file.txt
+
+echo "new_string" >> new_dir/test_file.txt
+sudo usermod -aG new_group $USER
+#sudo reboot
+sudo chmod g+w new_dir/test_file.txt
+echo "User currently in the group" >> new_dir/test_file.txt
+
+--- 3 ---
+
+echo $PATH
+sudo ln -s "$(pwd)/new_dir/test_file.txt" /usr/local/games/tf
+sudo chmod g-rwx,o-rwx /usr/local/games/tf
+sudo chown root /usr/local/games/tf
+#sudo chown -h root /usr/local/games/tf
+ls -l /usr/local/games/tf
+ls -l new_dir/test_file.txt
+cat /usr/local/games/tf
+cat new_dir/test_file.txt
+
+alias lr="ls -l"
+lr
+ctrl alt T
+lr
+nano ~/.bashrc
+alias lr="ls -l"
+lr
+ctrl alt T
+lr
+
+--- 4 ---
+
+jobs
+sleep 500 &
+sleep 300
+ctrl z
+fg
+#sleep 1000 & 
+#kill -STOP %3
+#fg 3
+
+tmux new -s session1
+cat
+ctrl B , D
+tmux new -s session2
+echo "the second session"
+ctrl B , D
+tmux ls
+tmux attach -t session1
+ctrl C
+ctrl B , D
+tmux kill-session -t session1
+exit
+ctrl alt T
+tmux ls
+tmux a -t session2
+ls -l
+exit
